@@ -1,0 +1,18 @@
+services:
+  talonnvr:
+    build: .
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./data/config:/data/config
+      - ./data/recordings:/data/recordings
+      - ./data/users:/data/users
+    environment:
+      - TZ=UTC
+      - MQTT_BROKER=homeassistant.local
+      - MQTT_PORT=1883
+      - JWT_SECRET=your_secure_secret_here
+      - ENABLE_GPU=false  # Can be true if GPU is available
+      - ENABLE_VAAPI=false  # Can be true if Intel VAAPI is available
+      - ENABLE_CORAL=false  # Can be true if Google Coral is available
+    restart: unless-stopped

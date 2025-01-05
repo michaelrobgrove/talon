@@ -1,0 +1,36 @@
+name: "TalonWatch"
+version: "0.0.10"
+slug: "talon_watch"
+description: "Keep watch over your home and business with TalonWatch NVR connecting your rtsp cameras."
+url: "https://github.com/michaelrobgrove/talonwatch"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+startup: application
+boot: auto
+ports:
+  4200/tcp: 4200
+ports_description:
+  4200/tcp: Web interface
+map:
+  - config:rw
+  - share:rw
+options:
+  mqtt_enabled: true
+  mqtt_host: "core-mosquitto"
+  mqtt_port: 1883
+  mqtt_username: ""
+  mqtt_password: ""
+  default_admin_user: "admin"
+  default_admin_password: ""
+schema:
+  mqtt_enabled: bool
+  mqtt_host: str
+  mqtt_port: port
+  mqtt_username: str
+  mqtt_password: str
+  default_admin_user: str
+  default_admin_password: str
